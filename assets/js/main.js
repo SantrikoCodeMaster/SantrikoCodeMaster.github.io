@@ -269,3 +269,24 @@
    */
   new PureCounter();
 })();
+
+// message
+const contactForm = document.getElementById("contact-form");
+
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const url = e.target.action;
+  const formData = new FormData(contactForm);
+
+  fetch(url, {
+    method: "post",
+    body: formData,
+    mode: "no-cors",
+  })
+    .then(() => {
+      //url tank you
+      window.location.href = "/tankyou.html";
+    })
+    .catch((e) => alert("Error occured"));
+});
